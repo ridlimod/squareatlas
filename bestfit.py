@@ -1,5 +1,5 @@
 import sys
-from math import sqrt
+from math import sqrt,ceil
 
 def bestfit(x,y,f):
     numpix=x*f*y
@@ -7,10 +7,15 @@ def bestfit(x,y,f):
     cs,fs = pixq//x,pixq//y
     xs,ys = cs*x,fs*y
 
+    pixq=ceil(pixq)
+
     left = f-fs*cs
+
+    cs = int(cs)
+    fs = int(fs)
     if left == 0:
         return cs,fs
-    if x>=y:
+    if x-pixq-xs >= y-pixq-ys:
         if left <= cs:
             return cs,fs+1
         else:
@@ -23,7 +28,7 @@ def bestfit(x,y,f):
 
 def block(x,y,f):
     c,f = bestfit(x,y,f)
-    return (c,c*x),(f,f*y)
+    return (c,int(c*x)),(f,int(f*y))
 
 def indx(c,f,frame):
     return (frame-1)%c,(frame-1)//c

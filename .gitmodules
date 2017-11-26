@@ -1,0 +1,3 @@
+[submodule "FileSequence"]
+	path = FileSequence
+	url = https://github.com/ridlimod/FileSequence.git

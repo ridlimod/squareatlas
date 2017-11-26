@@ -99,3 +99,12 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# test files
+*.png
+*.tif
+*.blend
+*.blend1
+*.vdb
+
+
