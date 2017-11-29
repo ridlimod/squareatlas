@@ -15,7 +15,7 @@ def bestfit(x,y,f):
     fs = int(fs)
     if left == 0:
         return cs,fs
-    if x-pixq-xs >= y-pixq-ys:
+    if x-pixq-xs < y-pixq-ys:
         if left <= cs:
             return cs,fs+1
         else:
