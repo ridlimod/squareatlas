@@ -15,14 +15,20 @@ def bestfit(x,y,f):
     fs = int(fs)
     if left == 0:
         return cs,fs
-    if x-pixq-xs < y-pixq-ys:
+    # print x,pixq,xs,abs(pixq-(xs+x))
+    # print y,pixq,ys,abs(pixq-(ys+y))
+    if abs(pixq-(xs+x)) > abs(pixq-(ys+y)):
         if left <= cs:
             return cs,fs+1
+        elif left <= fs:
+            return cs+1,fs
         else:
             return cs+1,fs+1
     else:
         if left <= fs:
             return cs+1,fs
+        elif left <= cs:
+            return cs,fs+1
         else:
             return cs+1,fs+1
 
@@ -45,6 +51,13 @@ if __name__=="__main__":
 
     print "\n"
     rx,ry,nf = 285,140,167
+    (c,x),(f,y) = block(rx,ry,nf)
+    print rx,ry,nf,":",c,x,f,y,c*f
+    for (x,y),f in map(lambda x:(indx(c,f,x),x),range(1,nf+1)):
+        print f,":",x,y
+
+    print "\n"
+    rx,ry,nf = 1280,720,40
     (c,x),(f,y) = block(rx,ry,nf)
     print rx,ry,nf,":",c,x,f,y,c*f
     for (x,y),f in map(lambda x:(indx(c,f,x),x),range(1,nf+1)):
